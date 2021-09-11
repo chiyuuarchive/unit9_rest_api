@@ -49,7 +49,8 @@ router.post("/courses", authenticateUser, asyncHandler(async (req, res) => {
       "description": req.body.description,
       "userId": req.currentUser.id
     });
-    res.status(201).location(`api/courses/${req.body.id}`).end();
+    console.log(course.id);
+    res.status(201).location(`api/courses/${course.id}`).end();
   }
   catch (error) {
     if (error.name === "SequelizeValidationError" || error.name === "SequelizeUniqueConstraintError") {
